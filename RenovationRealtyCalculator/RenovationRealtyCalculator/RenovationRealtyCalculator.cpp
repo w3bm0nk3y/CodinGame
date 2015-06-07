@@ -5,12 +5,11 @@
 using namespace std;
 
 // ---------------- the class prototype ---------------------------------
-class DateProfile
+class HomeComps
 {
 private:
-    char gender, searchGender;
-    int romance, finance;
-    string name;
+    int bedrooms, bathrooms, squareFootage, salePrice;
+    string address;
 
     // private methods
     double determineGenderFit(DateProfile partner);
@@ -19,30 +18,30 @@ private:
 
 public:
     // static constants
-    static const int MIN_ROMANCE = 1;
-    static const int MAX_ROMANCE = 10;
-    static const int MIN_FINANCE = 1;
-    static const int MAX_FINANCE = 10;
+    static const int MIN_SQUARE_FOOTAGE = 1500;
+    static const int MAX_SQUARE_FOOTAGE = 2000;
+    static const int MIN_BEDROOMS = 2;
+    static const int MAX_BEDROOMS = 4;
+    static const int MIN_BATHROOMS = 2;
+    static const int MAX_BATHROOMS = 4;
     static const int MIN_STR_LEN = 1;
     static const int MAX_STR_LEN = 60;
-    static const char DEFAULT_GENDER = 'F';
-    static const char DEFAULT_SEARCH_GENDER = 'M';
-    static const int DEFAULT_ROMANCE = 5;
-    static const int DEFAULT_FINANCE = 5;
-    static const int TEN = 10;
-    static const double PERFECT_MATCH;
-    static const double NO_MATCH;
-    static const string DEFAULT_NAME;
+    static const int MIN_SALE_PRICE = 600000;
+    static const int MAX_SALE_PRICE = 1200000;
+    static const int DEFAULT_SALE_PRICE = 800000;
+    static const int DEFAULT_BEDROOMS = 3;
+    static const int DEFAULT_BATHROOMS = 2;
+    static const int DEFAULT_SQUARE_FOOTAGE = 1710;
+    static const string DEFAULT_ADDRESS;
 
     // default constructor
-    DateProfile();
+    HomeComps();
 
     // deconstructor
-    ~DateProfile();
+    ~HomeComps();
 
     // 5-parameter constructor
-    DateProfile(char myGender, char mySearchGender, int myRomance,
-        int myFinance, string myName);
+    HomeComps(int bedrooms, int bathrooms, int squareFootage, int salePrice, string address);
 
     // mutators and accessors
     bool setGender(char gender);
