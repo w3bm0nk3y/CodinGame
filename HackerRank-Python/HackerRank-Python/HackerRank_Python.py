@@ -1,3 +1,5 @@
-myString = 'How many chickens does it take to cross the road?\n'
-answer = raw_input(myString)
-print(answer)
+a = int(raw_input())
+b = int(raw_input())
+print(a+b)
+print(a-b)
+print(a*b)
