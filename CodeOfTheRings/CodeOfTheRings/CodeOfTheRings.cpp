@@ -1,248 +1,322 @@
-// -------------- SOURCE FILE OF ASSIGNMENT ----------
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
+/**
+* Auto-generated code below aims at helping you parse
+* the standard input according to the problem statement.
+**/
+
 // method prototypes
-string getString();
-string convertToUpper(string theString);
-string convertToLower(string theString);
-int countVowels(string theString);
-int countConsonants(string theString);
-string reverseStr(string theString);
+string runeReplace(string theString);
+string runeMove(int currentPosition, int runePosition);
 
 // global constants
-int const MIN_LENGTH = 4;
-int const MAX_LENGTH = 24;
+int const MIN_LENGTH = 1;
+int const MAX_LENGTH = 500;
+string ltrA = "+"; //
+string ltrB = ltrA + ltrA;
+string ltrC = ltrB + ltrA;
+string ltrD = ltrC + ltrA;
+string ltrE = ltrD + ltrA;
+string ltrF = ltrE + ltrA;
+string ltrG = ltrF + ltrA;
+string ltrH = ltrG + ltrA;
+string ltrI = ltrH + ltrA;
+string ltrJ = ltrI + ltrA;
+string ltrK = ltrJ + ltrA;
+string ltrL = ltrK + ltrA;
+string ltrM = ltrL + ltrA;
+string ltrZ = "-";
+string ltrY = ltrZ + ltrZ;
+string ltrX = ltrY + ltrZ;
+string ltrW = ltrX + ltrZ;
+string ltrV = ltrW + ltrZ;
+string ltrU = ltrV + ltrZ;
+string ltrT = ltrU + ltrZ;
+string ltrS = ltrT + ltrZ;
+string ltrR = ltrS + ltrZ;
+string ltrQ = ltrR + ltrZ;
+string ltrP = ltrQ + ltrZ;
+string ltrO = ltrP + ltrZ;
+string ltrN = ltrO + ltrZ;
+string moveOn = ">";
+string moveBack = "<";
+string commitRune = ".";
 
 int main()
 {
-    string theString;
+    
 
-    theString = getString();
-    cout << "\nUPPER CASED: " << convertToUpper(theString) << endl;
-    cout << "\nlower cased: " << convertToLower(theString) << endl;
-    cout << "\nNumber of Vowels: " << countVowels(theString) << endl;
-    cout << "\nNumber of Consonants: " << countConsonants(theString) << endl;
-    cout << "\nIn reverse: " << reverseStr(theString) << endl << endl;
+
+    int* varArray[] = { &c1, &c2, &c3 };
+    int size = sizeof(varArray) / sizeof(int*);
+
+    for (int i = 0; i < size; ++i)
+    {
+        std::cout << "This variable c" << i + 1 << " = " << *varArray[i] << std::endl;
+    }
+
+
+    
+    
+    
+    //string magicPhrase;
+    //getline(cin, magicPhrase);
+    string magicPhrase = "AZ";
+    int currentPosition = 0;
+    int runePosition = 0;
+
+    // Write an action using cout. DON'T FORGET THE "<< endl"
+    // To debug: cerr << "Debug messages..." << endl;
+    //cerr << magicPhrase << endl;
+    //cerr << magicPhrase.length() << endl;
+    //cout << magicPhrase << endl;
+    cout << magicPhrase.length() << endl;
+
+    for (int n = 0; n < magicPhrase.length(); n++)
+    {
+        cout << runeMove(currentPosition, runePosition) << endl;
+        cout << runeReplace(magicPhrase) << endl;
+    }
+
 }
 
-// gets input, computes and returns answer
-string getString()
+
+// outputs move characters based on position difference
+string runeMove(int currentPosition, int runePosition)
 {
-    string prompt, userInput;
+    string moveString;
+    int difference;
+    difference = currentPosition - runePosition;
+    //letterPosition = runePosition;
 
-    while (true)
+    if (difference < 0)
     {
-        // get phrase or sentence
-        prompt = "Please enter a phrase or sentence: ";
-        cout << prompt;
-        getline(cin, userInput);
-
-        // test for reasonable length
-        if (userInput.length() < MIN_LENGTH || userInput.length() > MAX_LENGTH)
+        for (int n = 0; n < abs(difference); n++)
         {
-            cout << "\nPassword must be between " << MIN_LENGTH << " and ";
-            cout << MAX_LENGTH << " characters.\n\n";
-            continue;
+            moveString = moveString + moveOn;
+        }
+    }
+
+    else if (difference > 0)
+    {
+        for (int n = 0; n < abs(difference); n++)
+        {
+            moveString = moveString + moveBack;
+        }
+    }
+
+    else
+    {
+        moveString = commitRune;
+    }
+
+    return moveString;
+}
+
+// converts string to replacement run letters and returns string
+string runeReplace(string theString)
+{
+    string returnString, currentLetter;
+    int length = theString.length();
+
+    for (int n = 0; n < length; n++)
+    {
+        if (isalpha(theString[n]))
+        {
+            if (theString[n] == 'A')
+            {
+                returnString = returnString + ltrA + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'B')
+            {
+                returnString = returnString + ltrB + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'C')
+            {
+                returnString = returnString + ltrC + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'D')
+            {
+                returnString = returnString + ltrD + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'E')
+            {
+                returnString = returnString + ltrE + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'F')
+            {
+                returnString = returnString + ltrF + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'G')
+            {
+                returnString = returnString + ltrG + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'H')
+            {
+                returnString = returnString + ltrH + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'I')
+            {
+                returnString = returnString + ltrI + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'J')
+            {
+                returnString = returnString + ltrJ + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'K')
+            {
+                returnString = returnString + ltrK + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'L')
+            {
+                returnString = returnString + ltrL + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'M')
+            {
+                returnString = returnString + ltrM + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'N')
+            {
+                returnString = returnString + ltrN + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'O')
+            {
+                returnString = returnString + ltrO + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'P')
+            {
+                returnString = returnString + ltrP + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'Q')
+            {
+                returnString = returnString + ltrQ + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'R')
+            {
+                returnString = returnString + ltrR + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'S')
+            {
+                returnString = returnString + ltrS + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'T')
+            {
+                returnString = returnString + ltrT + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'U')
+            {
+                returnString = returnString + ltrU + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'V')
+            {
+                returnString = returnString + ltrV + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'X')
+            {
+                returnString = returnString + ltrX + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'Y')
+            {
+                returnString = returnString + ltrY + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else if (theString[n] == 'Z')
+            {
+                returnString = returnString + ltrZ + commitRune + moveOn;
+                cerr << returnString << endl;
+                continue;
+            }
+
+            else
+            {
+                continue;
+            }
         }
 
         else
         {
-            // user entered a string of reasonable length
-            break;
-        }
-
-    }
-    return userInput;
-}
-
-// converts string to upper case and returns uppercase
-string convertToUpper(string theString)
-{
-    int length = theString.length();
-
-    for (int n = 0; n < length; n++)
-        theString[n] = toupper(theString[n]);
-
-    return theString;
-}
-
-// converts string to lower case and returns lowercase
-string convertToLower(string theString)
-{
-    int length = theString.length();
-
-    for (int n = 0; n < length; n++)
-        theString[n] = tolower(theString[n]);
-
-    return theString;
-}
-
-// counts vowels and returns vowel count
-int countVowels(string theString)
-{
-    int countVowels = 0;
-    int length = theString.length();
-
-    for (int n = 0; n < length; n++)
-    {
-        if (isalpha(theString[n]))
-        {
-            if (tolower(theString[n]) == 'a' || tolower(theString[n]) == 'e' ||
-                tolower(theString[n]) == 'i' || tolower(theString[n]) == 'o' ||
-                tolower(theString[n]) == 'u')
-            {
-                countVowels++;
-                continue; //  count the vowel
-            }
+            returnString = returnString + commitRune + moveOn;
+            cerr << "We have a space" << endl;
+            cerr << returnString << endl;
+            continue;
         }
     }
 
-    return countVowels;
+    return returnString;
 }
-
-// counts consonants and returns consonant count
-int countConsonants(string theString)
-{
-    int countConsonants = 0;
-    int length = theString.length();
-
-    for (int n = 0; n < length; n++)
-    {
-        if (isalpha(theString[n]))
-        {
-            if (tolower(theString[n]) == 'a' || tolower(theString[n]) == 'e' ||
-                tolower(theString[n]) == 'i' || tolower(theString[n]) == 'o' ||
-                tolower(theString[n]) == 'u')
-                continue; //  check for vowel and continue for consonant
-            else
-            {
-                countConsonants++;
-                continue; //  count the consonant
-            }
-        }
-    }
-
-    return countConsonants;
-}
-
-// converts string to lower case and returns reverse
-string reverseStr(string theString)
-{
-    string reversedString;
-    for (int n = theString.length(); n >= 0; n--)
-        reversedString = reversedString + theString[n];
-
-    return reversedString;
-}
-
-/*------------ OUTPUT PASTED FROM SCREEN ------------
---------------------RUN 1----------------------------
-----------------ALL SYMBOLS--------------------------
-Please enter a phrase or sentence: !@#
-
-Password must be between 4 and 24 characters.
-
-Please enter a phrase or sentence: !@#$%^&*()_+_)(**&^%$#@!~
-
-Password must be between 4 and 24 characters.
-
-Please enter a phrase or sentence: !@#$%^&*()
-
-UPPER CASED: !@#$%^&*()
-
-lower cased: !@#$%^&*()
-
-Number of Vowels: 0
-
-Number of Consonants: 0
-
-In reverse:  )(*&^%$#@!
-
-Press any key to continue . . .
---------------------RUN 2----------------------------
-------------------ALL SPACES-------------------------
-Please enter a phrase or sentence:
-
-Password must be between 4 and 24 characters.
-
-Please enter a phrase or sentence:
-
-Password must be between 4 and 24 characters.
-
-Please enter a phrase or sentence:
-
-UPPER CASED:
-
-lower cased:
-
-Number of Vowels: 0
-
-Number of Consonants: 0
-
-In reverse:
-
-Press any key to continue . . .
---------------------RUN 3----------------------------
----------------SPEC FILE EXAMPLE---------------------
-Please enter a phrase or sentence: aei XYZ
-
-UPPER CASED: AEI XYZ
-
-lower cased: aei xyz
-
-Number of Vowels: 3
-
-Number of Consonants: 3
-
-In reverse:  ZYX iea
-
-Press any key to continue . . .
---------------------RUN 4----------------------------
--------------SPEC FILE WITH ERRORS-------------------
-Please enter a phrase or sentence: aei
-
-Password must be between 4 and 24 characters.
-
-Please enter a phrase or sentence: aei XYZ !@#$%^&*())(*&^%$#@!~
-
-Password must be between 4 and 24 characters.
-
-Please enter a phrase or sentence: aei XYZ
-
-UPPER CASED: AEI XYZ
-
-lower cased: aei xyz
-
-Number of Vowels: 3
-
-Number of Consonants: 3
-
-In reverse:  ZYX iea
-
-Press any key to continue . . .
---------------------RUN 5----------------------------
--------------MIXED EXAMPLE WITH ERRORS---------------
-Please enter a phrase or sentence: Hoo
-
-Password must be between 4 and 24 characters.
-
-Please enter a phrase or sentence: Hooray for Foothill College Computer Science
-
-Password must be between 4 and 24 characters.
-
-Please enter a phrase or sentence: Hooray for Foothill CS!
-
-UPPER CASED: HOORAY FOR FOOTHILL CS!
-
-lower cased: hooray for foothill cs!
-
-Number of Vowels: 7
-
-Number of Consonants: 12
-
-In reverse:  !SC llihtooF rof yarooH
-
-Press any key to continue . . .
------------------ END OF SUBMISSION ---------------------*/
