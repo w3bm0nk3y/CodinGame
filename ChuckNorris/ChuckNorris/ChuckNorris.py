@@ -20,20 +20,20 @@ while i < len(MESSAGE):
     BINARY = BINARY[2:]
 
     print BINARY
-    print epsilon
-    if BINARY[searchStart] == BINARY[searchEnd]:
-        print BINARY[searchStart], " equals ", BINARY[searchEnd]
-        print "Count is ", count
-        count = count + 1
-    else:
-        print BINARY[searchStart], " does not equal ", BINARY[searchEnd]
-        searchStart = searchEnd
-        count = 1
-    epsilon = epsilon + 1
+    #print epsilon
+    #if BINARY[searchStart] == BINARY[searchEnd]:
+    #    print BINARY[searchStart], " equals ", BINARY[searchEnd]
+    #    print "Count is ", count
+    #    count = count + 1
+    #else:
+    #    print BINARY[searchStart], " does not equal ", BINARY[searchEnd]
+    #    searchStart = searchEnd
+    #    count = 1
+    #epsilon = epsilon + 1
 
-    '''    
-    print >> sys.stderr, BINARY[searchStart:]
-    k = 2
+        
+    #print >> sys.stderr, BINARY[searchStart:]
+    k = 0
 
 
     while k < len(BINARY):
@@ -44,5 +44,5 @@ while i < len(MESSAGE):
 
         k += 1
     i += 1
-    '''
+    
 print finalString
