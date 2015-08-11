@@ -1,4 +1,4 @@
-import sys
+﻿import sys
 import math
 import binascii
 
@@ -16,27 +16,51 @@ def binaryConvert(letter):
 
     return BINARY
 
-def numConvert(number):
-    if number == "1":
-        return "0 "
-    elif number == "0":
-        return "00 "
-    else:
-        return "This number makes no sense"
+def convertBinary(wholeBinary):
+    searchStart = 0
+    searchEnd = searchStart + 1
+    returnString = ""
+    while searchStart < len(wholeBinary):
+        if wholeBinary[searchStart] == wholeBinary[searchEnd]:
+            print "equal"
+            returnString = returnString + "0"
+            searchStart += 1
+            print "1st returnString is now ", returnString
+        elif wholeBinary[searchStart] != wholeBinary[searchEnd]:
+            print "not equal"
+            returnString = returnString + "0 "
+            if wholeBinary[searchStart] == "1":
+                returnString = "0 " + returnString
+                print "Found a one"
+            elif wholeBinary[searchStart] == "0":
+                returnString = "00 " + returnString
+                print "Found a zero"
+            searchStart = searchEnd
+            print "2nd returnString is now ", returnString   
+        else:
+            print "else"
+
+    if wholeBinary[searchStart] == "1":
+                returnString = "0 " + returnString
+                print "Found a one"
+    elif wholeBinary[searchStart] == "0":
+                returnString = "00 " + returnString
+                print "Found a zero"
+    print "3rd returnString is now ", returnString
+
+    return returnString
+
 
 
 i = 0
 finalString = ""
-epsilon = 1
-count = 1
-searchStart = 0
-searchEnd = searchStart + epsilon
+
 while i < len(MESSAGE):
     convertedBinary = binaryConvert(MESSAGE[i])
-    k = 0
-    while k < len(convertedBinary):
-        print numConvert(convertedBinary[k])
-        k += 1
-    i += 1
     
-#print finalString
+    i += 1
+
+#print binaryConvert(MESSAGE)
+finalString = convertBinary("1000011")    
+    
+print finalString
