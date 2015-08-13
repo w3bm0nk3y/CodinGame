@@ -20,33 +20,41 @@ def convertBinary(wholeBinary):
     searchStart = 0
     searchEnd = searchStart + 1
     returnString = ""
+    currentString = ""
     while searchStart < len(wholeBinary):
+        print wholeBinary
+        print searchStart
+        print searchEnd
         if wholeBinary[searchStart] == wholeBinary[searchEnd]:
-            print "equal"
-            returnString = returnString + "0"
+            currentString = currentString + "0"
+            searchEnd += 1
             searchStart += 1
-            print "1st returnString is now ", returnString
+            print "currentString is now " + currentString           
         elif wholeBinary[searchStart] != wholeBinary[searchEnd]:
-            print "not equal"
-            returnString = returnString + "0 "
+            currentString = currentString + "0 "
+            print "currentString is now " + currentString            
             if wholeBinary[searchStart] == "1":
-                returnString = "0 " + returnString
+                print "Pre-returnString is now " + returnString
+                returnString = returnString + "0 " + currentString
                 print "Found a one"
+                print "returnString is now " + returnString
             elif wholeBinary[searchStart] == "0":
-                returnString = "00 " + returnString
+                print "Pre-returnString is now " + returnString
+                returnString = returnString + "00 " + currentString
                 print "Found a zero"
+                print "returnString is now " + returnString
             searchStart = searchEnd
-            print "2nd returnString is now ", returnString   
+            searchEnd += 1  
         else:
             print "else"
 
-    if wholeBinary[searchStart] == "1":
-                returnString = "0 " + returnString
-                print "Found a one"
-    elif wholeBinary[searchStart] == "0":
-                returnString = "00 " + returnString
-                print "Found a zero"
-    print "3rd returnString is now ", returnString
+    #if wholeBinary[searchStart] == "1":
+    #            returnString = "0 " + returnString
+    #            print "Found a one"
+    #elif wholeBinary[searchStart] == "0":
+    #            returnString = "00 " + returnString
+    #            print "Found a zero"
+    #print "3rd returnString is now ", returnString
 
     return returnString
 
@@ -60,7 +68,7 @@ while i < len(MESSAGE):
     
     i += 1
 
-#print binaryConvert(MESSAGE)
-finalString = convertBinary("1000011")    
+print binaryConvert(MESSAGE)
+finalString = convertBinary(convertedBinary)    
     
 print finalString
