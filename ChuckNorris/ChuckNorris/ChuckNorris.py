@@ -5,16 +5,22 @@ import binascii
 # Auto-generated code below aims at helping you parse
 # the standard input according to the problem statement.
 
-MESSAGE = "C"
+MESSAGE = "This is a test!"
 
 # Write an action using print
 # To debug: print >> sys.stderr, "Debug messages..."
 
-def binaryConvert(letter):
-    BINARY = bin(int(binascii.hexlify(letter), 16))
-    BINARY = BINARY[2:]
+def a2b(a):
+    return bin(ord(a))[2:] 
 
-    return BINARY
+def convertToList(string):
+    return list(string)
+
+#def binaryConvert(letter):
+#    BINARY = bin(int(binascii.hexlify(letter), 16))
+#    BINARY = BINARY[2:]
+
+#    return BINARY
 
 def convertBinary(wholeBinary):
     searchStart = 0
@@ -64,11 +70,13 @@ i = 0
 finalString = ""
 
 while i < len(MESSAGE):
-    convertedBinary = binaryConvert(MESSAGE[i])
-    
+    convertedBinary = a2b(MESSAGE[i])
+    print convertedBinary
+    L = list(convertedBinary)
+    print L
     i += 1
 
-print binaryConvert(MESSAGE)
+#print binaryConvert(MESSAGE)
 finalString = convertBinary(convertedBinary)    
     
 print finalString
