@@ -5,7 +5,7 @@ import binascii
 # Auto-generated code below aims at helping you parse
 # the standard input according to the problem statement.
 
-MESSAGE = "This is a test!"
+MESSAGE = "CC"
 
 # Write an action using print
 # To debug: print >> sys.stderr, "Debug messages..."
